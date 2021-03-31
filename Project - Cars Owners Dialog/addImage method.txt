@@ -1,0 +1,51 @@
+public void AddImage()
+        {
+            FileStream fs;
+            BinaryReader br;
+
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Select a picture";
+            openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|GIF Files (*.gif)|*.gif";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                Image img = new Image();
+                img.Source= new BitmapImage(new Uri(openFileDialog.FileName));
+                btnImage.Content = "";
+                
+                // Set button background
+                ImageBrush brush= new ImageBrush();
+                BitmapImage bi= new BitmapImage(new Uri(openFileDialog.FileName));
+                brush.ImageSource = bi;
+                btnImage.Background = brush;
+
+                //Image to byte[] to save it in database
+                string FileName = openFileDialog.FileName;                
+                fs = new FileStream(FileName, FileMode.Open, FileAccess.Read);
+                br = new BinaryReader(fs);
+                ImageData = br.ReadBytes((int)fs.Length);
+                br.Close();
+                fs.Close();
+            }            
+        }       
+
+
+=======================select to display==============================
+ImageBrush brush;
+                BitmapImage bi;
+                using (var ms = new MemoryStream(owner.Image))
+                {
+                    brush = new ImageBrush();
+
+                    bi = new BitmapImage();
+                    bi.BeginInit();
+                    bi.CreateOptions = BitmapCreateOptions.None;
+                    bi.CacheOption = BitmapCacheOption.OnLoad;
+                    bi.StreamSource = ms;
+                    bi.EndInit();
+                }
+
+                brush.ImageSource = bi;
+                btnImage.Background = brush;
+                btnImage.Content = string.Empty;
+                ImageData = owner.Image;

@@ -1,0 +1,42 @@
+<< current date goes here >>
+1. What I have done / not done since last Scrum?
+2. What I plan to do from this scrum to next? (next 24 hours)
+3. Where do I need assistance? What do I need to figure out?
+==========================================================
+2021/01/23 Shijun
+1. Since last scrum:
+- created dbcontext class and globan class for dbcontext instance
+- modified entities
+- relationships configuration not done
+2. To do:
+- configure relationships bewteen entities
+- create mainwindow
+- mockup of custom dialog 
+
+2021/01/24 Shijun
+1. Since last scrum:
+- configure relationships bewteen entities using Flent API
+- create 3 pages in one mainwindow with 3 tabs
+2. To do:
+- insert values into pizza table
+- add verification for class fields
+- some events
+
+2021/01/25 Shijun
+1. Since last scrum:
+- insert values into pizza table
+- add verification for class fields
+- finish part of check-out page: placeOrder button event, get client info and get payment info, and save to db
+- finish order tracking page
+2. To do:
+- need to fix n error on order-tracking method
+- combine order part and client/payment part on check-out page
+
+2021/01/26 Shijun
+1. Since last scrum:
+- modified configuration for relationships using Flent API, to fix the problem that item couldn't be initialized without orderId
+- fix problem for updating existing client data with unique key "Phone"
+- combined listview of shipping cart with client info and payment info, into place order event/method
+2. To do:
+- combine the remaining individual parts
+- fix bugs
